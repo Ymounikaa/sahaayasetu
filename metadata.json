@@ -1,0 +1,6 @@
+{
+  "name": "SAHAAYA SETU",
+  "description": "An accessible multilingual healthcare platform designed to help migrant workers and patients overcome language and literacy barriers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
