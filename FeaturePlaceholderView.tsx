@@ -849,16 +849,26 @@ export default function FeaturePlaceholderView({
     { 
       sender: 'bot', 
       text: 'Namaste! I am your SAHAAYA SETU Multilingual Assistant. You can ask me medical questions by typing or speaking in your language.', 
-      translated: langCode === 'hi' 
-        ? 'नमस्ते! मैं आपका सहाय सेतु बहुभाषी सहायक हूँ। आप अपनी भाषा में टाइप करके या बोलकर मुझसे चिकित्सा संबंधी प्रश्न पूछ सकते हैं।'
-        : langCode === 'te'
-        ? 'నమస్తే! నేను మీ సహాయ సేతు మల్టీలింగ్వల్ అసిస్టెంట్. మీరు మీ భాషలో టైప్ చేయడం ద్వారా లేదా మాట్లాడటం ద్వారా నన్ను ఆరోగ్య ప్రశ్నలు అడగవచ్చు.'
-        : undefined,
+      translated:
+  langCode === 'hi'
+    ? 'नमस्ते! मैं आपका SAHAAYA SETU बहुभाषी सहायक हूँ। आप अपनी भाषा में टाइप करके या बोलकर मुझसे चिकित्सा संबंधी प्रश्न पूछ सकते हैं।'
+    : langCode === 'te'
+    ? 'నమస్తే! నేను మీ సహాయ సేతు మల్టీలింగ్వల్ అసిస్టెంట్. మీరు మీ భాషలో టైప్ చేయడం ద్వారా లేదా మాట్లాడడం ద్వారా నన్ను ఆరోగ్య ప్రశ్నలు అడగవచ్చు.'
+    : langCode === 'ta'
+    ? 'வணக்கம்! நான் உங்கள் SAHAAYA SETU பன்மொழி உதவியாளர். உங்கள் மொழியில் தட்டச்சு செய்து அல்லது பேசி மருத்துவ கேள்விகளை கேட்கலாம்.'
+    : langCode === 'kn'
+    ? 'ನಮಸ್ಕಾರ! ನಾನು ನಿಮ್ಮ SAHAAYA SETU ಬಹುಭಾಷಾ ಸಹಾಯಕ. ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ ಅಥವಾ ಮಾತನಾಡಿ ವೈದ್ಯಕೀಯ ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳಬಹುದು.'
+    : undefined,
+
       time: '12:00 PM' 
     }
   ]);
   const [chatInput, setChatInput] = useState('');
   const [chatMicActive, setChatMicActive] = useState(false);
+
+
+
+
 
   const handleSendChatMsg = (e: React.FormEvent) => {
     e.preventDefault();
@@ -879,18 +889,28 @@ export default function FeaturePlaceholderView({
       const query = userMsg.toLowerCase();
       if (query.includes('fever') || query.includes('ज्वर') || query.includes('జ్వరం') || query.includes('ताप')) {
         botText = "Keep yourself hydrated and rest. For mild viral fever, paracetamol 500mg may be used, but please visit our clinic if temperature exceeds 101F.";
-        localized = langCode === 'te' 
-          ? "మిమ్మల్ని మీరు హైడ్రేట్ గా ఉంచుకోండి మరియు విశ్రాంతి తీసుకోండి. తేలికపాటి వైరల్ జ్వరం కోసం పారాసిటమాల్ 500mg వాడవచ్చు, కానీ ఉష్ణోగ్రత 101F కంటే ఎక్కువగా ఉంటే దయచేసి మా క్లినిక్‌ని సందర్శించండి."
-          : langCode === 'hi'
-          ? "खुद को हाइड्रेटेड रखें और आराम करें। हल्के वायरल बुखार के लिए, पैरासिटामोल 500mg का उपयोग किया जा सकता है, लेकिन यदि तापमान 101F से अधिक हो जाता है तो कृपया हमारे क्लिनिक पर जाएँ।"
-          : "";
+       localized =
+  langCode === 'te'
+    ? 'మీరు విశ్రాంతి తీసుకోండి. తేలికపాటి వైరల్ జ్వరానికి పారాసెటమాల్ 500mg ఉపయోగించవచ్చు. జ్వరం 101°F దాటితే వైద్యుడిని సంప్రదించండి.'
+    : langCode === 'hi'
+    ? 'खुद को हाइड्रेट रखें और आराम करें। हल्के वायरल बुखार के लिए पैरासिटामोल 500mg का उपयोग किया जा सकता है। यदि तापमान 101°F से अधिक हो जाए तो डॉक्टर से मिलें।'
+    : langCode === 'ta'
+    ? 'நீரை அதிகமாக குடித்து ஓய்வு எடுக்கவும். லேசான காய்ச்சலுக்கு பாராசிட்டமால் 500mg பயன்படுத்தலாம். 101°F-ஐ கடந்தால் மருத்துவரை அணுகவும்.'
+    : langCode === 'kn'
+    ? 'ಸಾಕಷ್ಟು ನೀರು ಕುಡಿಯಿರಿ ಮತ್ತು ವಿಶ್ರಾಂತಿ ಪಡೆಯಿರಿ. ಸೌಮ್ಯ ಜ್ವರಕ್ಕೆ ಪ್ಯಾರಾಸಿಟಮಾಲ್ 500mg ಬಳಸಬಹುದು. ಜ್ವರ 101°F ಮೀರಿದರೆ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.'
+    : "";
       } else if (query.includes('pain') || query.includes('दर्द') || query.includes('నొప్పి')) {
         botText = "Localized pain might occur due to labor exhaustions. Take warm compression rest, or meet Dr. Ramesh in Room 104.";
-        localized = langCode === 'te'
-          ? "శారీరక శ్రమ కారణంగా నొప్పులు రావచ్చు. గోరువెచ్చని నీటి కాపడం పెట్టండి లేదా గది నంబర్ 104 లో డాక్టర్ రమేష్‌ను కలవండి."
-          : langCode === 'hi'
-          ? "शारीरिक श्रम के कारण दर्द हो सकता है। गर्म पानी से सिकाई करें या कमरा नंबर 104 में डॉ. रमेश से मिलें।"
-          : "";
+       localized =
+  langCode === 'te'
+    ? 'శారీరక శ్రమ వల్ల నొప్పి రావచ్చు. వేడి ఒత్తిడి చేసి విశ్రాంతి తీసుకోండి లేదా డాక్టర్ రమేష్‌ను కలవండి.'
+    : langCode === 'hi'
+    ? 'शारीरिक श्रम के कारण दर्द हो सकता है। गर्म पानी से सिकाई करें या डॉ. रमेश से मिलें।'
+    : langCode === 'ta'
+    ? 'உடல் சோர்வால் வலி இருக்கலாம். சூடான ஒத்தடம் செய்து ஓய்வெடுக்கவும் அல்லது டாக்டர் ரமேஷை சந்திக்கவும்.'
+    : langCode === 'kn'
+    ? 'ದೇಹದ ಶ್ರಮದಿಂದ ನೋವು ಇರಬಹುದು. ಬಿಸಿ ಒತ್ತಡ ನೀಡಿ ವಿಶ್ರಾಂತಿ ಪಡೆಯಿರಿ ಅಥವಾ ಡಾ. ರಮೇಶ್ ಅವರನ್ನು ಭೇಟಿ ಮಾಡಿ.'
+    : "";
       }
 
       setChatFeed(prev => [...prev, { 
